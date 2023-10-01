@@ -8,6 +8,8 @@ import { ProjectDetail } from '../../core/types/data.types';
 import DashboardProjectGallery from '../Dashboard-project-gallery/Dashboard-project-gallery.vue';
 import DashboardProjectEditCard from '../Dashboard-project-edit-card/Dashboard-project-edit-card.vue';
 import { UpdateProjectFormData } from '../../core/types/admin.types';
+import Toast from '../Toast/Toast.vue';
+import { useToast } from '../../core/composables/useToast';
 
 export interface OnOpenRemoveModalinput {
   id: string;
@@ -22,6 +24,8 @@ const emit = defineEmits<{
   (e: 'onOpenRemoveModal', input: OnOpenRemoveModalinput): void;
   (e: 'onProjectUpdate', status: number): void;
 }>();
+
+const { toastState, manageToastState } = useToast();
 
 const projectsLoading = ref(false);
 const projectInfo = ref<ProjectDetail>();
@@ -117,9 +121,15 @@ const onOpenRemoveModal = (e: Event) => {
 onMounted(async () => {
   projectsLoading.value = true;
 
-  projectInfo.value = await new DefaultProjectsService().getProjectById(
+  const projectResponse = await new DefaultProjectsService().getProjectById(
     props.projectId
   );
+
+  if ('status' in projectResponse) {
+    manageToastState(projectResponse.status, '', 'Error carregant projectes');
+  } else {
+    projectInfo.value = projectResponse;
+  }
 
   projectsLoading.value = false;
 });
@@ -169,6 +179,11 @@ onMounted(async () => {
       </div>
     </section>
   </form>
+  <Toast
+    v-if="toastState.open"
+    :content="toastState.content"
+    :type="toastState.type"
+  />
 </template>
 
 <style scoped>

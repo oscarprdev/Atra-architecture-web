@@ -76,8 +76,8 @@ onMounted(async () => {
   const aboutInfoResponse =
     await new DefaultAboutService().getAboutScreenInfo();
 
-  about.image = aboutInfoResponse.image;
-  about.text = aboutInfoResponse.text;
+  about.image = aboutInfoResponse?.image || '';
+  about.text = aboutInfoResponse?.text || [''];
 
   aboutInfoLoading.value = false;
   closeModal('loading');

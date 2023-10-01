@@ -10,6 +10,7 @@ import { IconLoader2 } from '@tabler/icons-vue';
 import { useModals } from '../../core/composables/useModals';
 import Modal from '../Modal/Modal.vue';
 import ModalLoading from '../Modal-loading/Modal-loading.vue';
+import { Home } from '../../core/types/data.types';
 
 interface DashboardPersonalInfo {
   email: string;
@@ -29,7 +30,7 @@ const personalInfo = reactive<DashboardPersonalInfo>({
 const { toastState, manageToastState } = useToast();
 
 const providePersonalInfo = async () => {
-  const heroText = await new DefaultHomeService().getHeroText();
+  const heroText = (await new DefaultHomeService().getHeroText()) as Home;
 
   personalInfo.email = heroText.data.email;
   personalInfo.direction = heroText.data.direction;

@@ -2,11 +2,15 @@
 import { ref, onMounted, nextTick } from 'vue';
 import { type ProjectGallery } from '../../core/types/data.types.ts';
 import { DefaultProjectsService } from '../../core/services/projects.service';
+import Toast from '../Toast/Toast.vue';
+import { useToast } from '../../core/composables/useToast';
 
 const lazyImages = ref<HTMLElement[]>([]);
 const projectImages = ref<string[]>([]);
 
 const projects = ref<ProjectGallery[]>([]);
+
+const { toastState, manageToastState } = useToast();
 
 const renderImagesAtIntersecting = () => {
   const options = {
@@ -32,7 +36,14 @@ const renderImagesAtIntersecting = () => {
 };
 
 onMounted(async () => {
-  projects.value = await new DefaultProjectsService().getProjectsGallery();
+  const projectsResponse =
+    await new DefaultProjectsService().getProjectsGallery();
+
+  if ('status' in projectsResponse) {
+    manageToastState(projectsResponse.status, '', 'Error carregant projectes');
+  } else {
+    projects.value = projectsResponse;
+  }
 
   nextTick(renderImagesAtIntersecting);
 });
@@ -67,6 +78,11 @@ onMounted(async () => {
       </article>
     </div>
   </section>
+  <Toast
+    v-if="toastState.open"
+    :content="toastState.content"
+    :type="toastState.type"
+  />
 </template>
 
 <style scoped>

@@ -2,30 +2,44 @@ import { Project, ProjectDetail, ProjectGallery } from '../types/data.types';
 import { DefaultHttpBase } from './http-base';
 
 interface ProjectsService {
-  getProjects(): Promise<Project[]>;
-  getProjectsGallery(): Promise<ProjectGallery[]>;
-  getProjectById(id: string): Promise<ProjectDetail>;
+  getProjects(): Promise<Project[] | { status: number }>;
+  getProjectsGallery(): Promise<ProjectGallery[] | { status: number }>;
+  getProjectById(id: string): Promise<ProjectDetail | { status: number }>;
 }
 
 export class DefaultProjectsService
   extends DefaultHttpBase
   implements ProjectsService
 {
-  async getProjects(): Promise<Project[]> {
+  async getProjects(): Promise<Project[] | { status: number }> {
     const projects = await this.get<Project[]>('projects');
 
-    return projects.data;
+    if (projects.status !== 400 && projects.data) {
+      return projects.data;
+    }
+
+    return { status: projects.status };
   }
 
-  async getProjectsGallery(): Promise<ProjectGallery[]> {
+  async getProjectsGallery(): Promise<ProjectGallery[] | { status: number }> {
     const projects = await this.get<ProjectGallery[]>('projects?top=true');
 
-    return projects.data;
+    if (projects.status !== 400 && projects.data) {
+      return projects.data;
+    }
+
+    return { status: projects.status };
   }
 
-  async getProjectById(id: string): Promise<ProjectDetail> {
+  async getProjectById(
+    id: string
+  ): Promise<ProjectDetail | { status: number }> {
     const project = await this.get<ProjectDetail>(`projects/${id}`);
 
-    return project.data;
+    if (project.status !== 400 && project.data) {
+      return project.data;
+    }
+
+    return { status: project.status };
   }
 }

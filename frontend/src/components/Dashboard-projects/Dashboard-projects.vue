@@ -47,7 +47,13 @@ const onProjectUploaded = async (status: number) => {
 };
 
 const updateProjectList = async () => {
-  projects.value = await new DefaultProjectsService().getProjects();
+  const projectsResponse = await new DefaultProjectsService().getProjects();
+
+  if ('status' in projectsResponse) {
+    manageToastState(projectsResponse.status, '', 'Error carregant projectes');
+  } else {
+    projects.value = projectsResponse;
+  }
 };
 
 onMounted(async () => {
