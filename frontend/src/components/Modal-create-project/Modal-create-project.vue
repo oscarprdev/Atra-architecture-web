@@ -175,10 +175,13 @@ const onRemoveImage = (image: string) => {
 .create-project-modal {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 3rem;
   width: 70vw;
   height: 80vh;
-  padding: 2rem;
+  max-width: 900px;
+  max-height: 580px;
+  padding: 2rem 3rem;
 }
 
 .create-project-modal-title {

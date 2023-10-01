@@ -11,6 +11,7 @@ interface HttpBase {
 
 export class DefaultHttpBase implements HttpBase {
   // private readonly apiUrl: string = 'https://atra-backend.vercel.app/';
+  // private readonly apiUrl: string = 'http://localhost:1234/';
   private readonly apiUrl: string = 'http://localhost:1234/';
 
   async get<T>(keyEndpoint: string): Promise<Response<T>> {

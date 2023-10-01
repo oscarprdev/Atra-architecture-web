@@ -6,8 +6,6 @@ export interface Data {
 }
 
 export interface Home {
-  title: string;
-  subtitle: string;
   data: PersonalInfo;
 }
 

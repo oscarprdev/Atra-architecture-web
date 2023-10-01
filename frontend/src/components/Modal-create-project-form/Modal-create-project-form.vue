@@ -109,7 +109,7 @@ const emit = defineEmits<{
 
 .form-container {
   margin-top: 3rem;
-  width: 37%;
+  width: 50%;
   height: 100%;
 }
 

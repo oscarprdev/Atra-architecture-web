@@ -6,22 +6,18 @@ interface HomeService {
 }
 
 export class DefaultHomeService extends DefaultHttpBase implements HomeService {
-  private isResponseDataValid(data: any) {
-    return data.every((item: any) => item);
-  }
+  // private isResponseDataValid(data: any) {
+  //   return data.every((item: any) => item);
+  // }
 
   async getHeroText(): Promise<Home | { status: number }> {
-    const [heroInfo, personalInfo] = await Promise.all([
-      await this.get<Home>('home'),
-      await this.get<PersonalInfo>('personal-info'),
-    ]);
+    const personalInfo = await this.get<PersonalInfo>('personal-info');
 
-    if (
-      this.isResponseDataValid(heroInfo.data) &&
-      this.isResponseDataValid(personalInfo.data)
-    ) {
+    console.log(personalInfo);
+
+    if (personalInfo.status !== 400) {
+      console.log('je;;p');
       return {
-        ...heroInfo.data,
         data: personalInfo.data ? personalInfo.data : {},
       } as Home;
     } else {

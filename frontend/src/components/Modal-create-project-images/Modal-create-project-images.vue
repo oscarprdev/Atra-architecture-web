@@ -93,7 +93,7 @@ const onUploadImage = (e: Event, isMain?: boolean) => {
 
 <style scoped>
 .images-section {
-  width: 45%;
+  width: 50%;
   height: 100%;
   padding: 1rem;
 
@@ -132,7 +132,7 @@ const onUploadImage = (e: Event, isMain?: boolean) => {
   display: grid;
   place-items: center;
   height: 40%;
-  width: 85%;
+  width: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
 }
@@ -203,7 +203,6 @@ const onUploadImage = (e: Event, isMain?: boolean) => {
   position: relative;
   width: 100%;
   height: 60%;
-  padding: 0 2rem;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
