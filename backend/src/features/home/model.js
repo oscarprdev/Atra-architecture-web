@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import { MainModel } from '../shared/main-model.js';
 import { CustomError } from '../../core/error/index.js';
-
 import { z } from 'zod';
 
 const homeSchema = z.object({
