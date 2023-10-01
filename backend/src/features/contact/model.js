@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { MainModel } from '../shared/main-model.js';
-import { validateContactSchema } from '../../core/schemas/contact-schema.js';
+import { validateContactSchema } from '../../core/zod-schemas/contact-schema.js';
 import { CustomError } from '../../core/error/index.js';
 
 dotenv.config();
