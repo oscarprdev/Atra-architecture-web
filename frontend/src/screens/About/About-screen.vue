@@ -24,6 +24,17 @@ onMounted(async () => {
 .about-screen {
   padding: 4rem 2rem;
   animation: fade-in 0.5s ease;
-  gap: 2rem;
+  gap: 1rem;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 550px) {
+  .about-screen {
+    flex-direction: column;
+  }
 }
 </style>

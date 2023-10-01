@@ -25,8 +25,10 @@ defineProps<{
   flex-direction: column;
   align-items: center;
   padding: 0.3rem;
-  margin-top: 3rem;
   box-shadow: 0 0 25px -10px rgba(0, 0, 0, 1);
+  height: 50vh;
+  width: 60vw;
+  animation: fade-right linear 0.4s;
 }
 
 h1 {
@@ -40,6 +42,7 @@ h1 {
 
 .about__text {
   padding: 1rem;
+  animation: fade-left linear 0.4s;
 }
 
 .about__text > p {
@@ -77,13 +80,13 @@ h1 {
 
 @media screen and (max-width: 550px) {
   .about__image-container {
-    width: 100vw;
+    width: 90vw;
     height: 20vh;
     padding: 0;
   }
 
   .about__text {
-    margin-top: -2rem;
+    margin-top: -8rem;
   }
 }
 </style>

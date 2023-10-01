@@ -21,10 +21,18 @@ const props = defineProps<{
 
 <style scoped>
 .contact__info {
-  align-self: start;
-  margin-left: 5rem;
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  z-index: 1;
+
+  padding: 3rem;
+  background-color: var(--dark);
+  color: var(--text-gray);
 
   font-size: clamp(0.8rem, 2vw, 1.2rem);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.096);
+  animation: fade-left linear 0.4s;
 }
 
 a {

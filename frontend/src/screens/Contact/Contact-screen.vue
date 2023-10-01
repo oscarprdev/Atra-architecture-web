@@ -11,10 +11,3 @@ const Contact = defineAsyncComponent(
     <Contact />
   </section>
 </template>
-
-<style scoped>
-.contact-screen {
-  margin-top: -2rem;
-  padding-bottom: 5rem;
-}
-</style>

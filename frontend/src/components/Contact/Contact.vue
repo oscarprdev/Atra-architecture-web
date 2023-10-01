@@ -1,114 +1,60 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from 'vue';
-import type {
-  ContactFormData,
-  PersonalInfo,
-} from '../../core/types/data.types.ts';
-import ContactForm from '../Contact-form/Contact-form.vue';
+import type { PersonalInfo } from '../../core/types/data.types.ts';
 import ContactInfo from '../Contact-info/Contact-info.vue';
 import { DefaultContactService } from '../../core/services/contact-service';
+import Image1 from '../../assets/images/contact.webp';
 
-const contactImage = ref();
+const contactImage = Image1;
 
 const personalInfo: Ref<PersonalInfo | null> = ref(null);
 
-const formKeys: Ref<ContactFormData | null> = ref(null);
-const buttonContent: Ref<string | null> = ref(null);
-
 onMounted(async () => {
   personalInfo.value = await new DefaultContactService().getPersonalInfo();
-  contactImage.value = await new DefaultContactService().getContactImage();
-
-  formKeys.value = {
-    name: 'Nom',
-    surname: 'Cognom',
-    subject: 'Asumpte',
-    email: 'Email',
-    content: 'Missatge',
-  };
-  buttonContent.value = 'enviar email';
 });
 </script>
 
 <template>
-  <h1 class="contact__title">Contacte</h1>
-  <div class="contact__image-container">
-    <img
-      v-if="contactImage"
-      :src="contactImage"
-      alt="random background contact image"
-    />
-  </div>
   <div class="contact__container" v-if="personalInfo">
+    <figure class="contact-image-wrapper">
+      <img :src="contactImage" alt="contact image" />
+    </figure>
     <ContactInfo :personalInfo="personalInfo" />
-    <ContactForm :personalInfo="personalInfo" />
   </div>
 </template>
 
 <style scoped>
-.contact__title {
-  color: var(--dark);
-  font-size: clamp(3rem, 10vw, 8rem);
-  text-transform: uppercase;
-  z-index: 1;
-
-  position: absolute;
-  right: 10rem;
-  top: 4rem;
-
-  animation: fade-left ease-in-out 0.5s;
-}
-
-.contact__image-container {
-  width: 40vw;
-  height: 40rem;
-  position: absolute;
-  top: 12rem;
-  left: 12rem;
-}
-
 .contact__container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
+  position: relative;
 
-  margin-top: 20rem;
+  padding: 1rem 3rem;
+  width: 100vw;
+  height: 100vh;
+}
 
-  padding: 3rem;
+.contact-image-wrapper {
+  position: absolute;
   width: 50vw;
-
+  top: 5rem;
+  left: 2rem;
+  position: relative;
   z-index: 1;
-
-  background-color: var(--dark);
-  color: var(--text-gray);
-
-  animation: fade-bottom ease-in-out 0.5s;
+  animation: fade-right linear 0.4s;
 }
 
-@keyframes fade-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-1rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.contact-image-wrapper img {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.096);
 }
 
-@keyframes fade-bottom {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.contact-image-wrapper::after {
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+  left: 5rem;
+  content: '';
+  width: 50vw;
+  height: 80vh;
+  background-color: var(--hero-image-light);
 }
 
 @media screen and (max-width: 1200px) {
