@@ -1,5 +1,3 @@
-import { API_URL } from '../constants/constants';
-
 interface Response<S> {
   status: number;
   data?: S;
@@ -12,9 +10,8 @@ interface HttpBase {
 }
 
 export class DefaultHttpBase implements HttpBase {
-  // private readonly apiUrl: string = 'https://atra-backend.vercel.app/';
+  private readonly apiUrl: string = 'https://atra-architecture-web.vercel.app/';
   // private readonly apiUrl: string = 'http://localhost:1234/';
-  private readonly apiUrl: string = API_URL;
 
   async get<T>(keyEndpoint: string): Promise<Response<T>> {
     try {
