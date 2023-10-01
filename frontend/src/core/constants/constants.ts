@@ -1,1 +1,1 @@
-export const API_URL = 'https://atra-backend.vercel.app/';
+export const API_URL = 'https://atra-architecture-web.vercel.app/';
