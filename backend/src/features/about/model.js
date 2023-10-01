@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { CustomError } from '../../core/error/index.js';
 import { MainModel } from '../shared/main-model.js';
-import { validatePartialAboutSchema } from '../../core/zod-schemas/about-schema.js';
+import { validatePartialAboutSchema } from '../../core/schemas/about.schema.js';
 
 dotenv.config();
 const database = process.env.MONGO_DB;

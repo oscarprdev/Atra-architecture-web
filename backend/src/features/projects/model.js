@@ -6,7 +6,7 @@ import {
   validatePartialProjectSchema,
   validateProjectImageSchema,
   validateProjectSchema,
-} from '../../core/zod-schemas/project-schema.js';
+} from '../../core/schemas/project.schema.js';
 
 dotenv.config();
 const database = process.env.MONGO_DB;
