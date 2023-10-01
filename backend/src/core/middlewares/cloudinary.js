@@ -4,8 +4,8 @@ import fs from 'fs';
 import cloudinary from 'cloudinary';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url); // Local
-const __dirname = path.dirname(__filename); // Local
+// const __filename = fileURLToPath(import.meta.url); // Local
+// const __dirname = path.dirname(__filename); // Local
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -20,8 +20,8 @@ const storage = multer.diskStorage({
     cb(null, `${Date.now()}-${file.originalname}`);
   },
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '/temp')); // Local
-    // cb(null, path.join('/tmp'));
+    // cb(null, path.join(__dirname, '/temp')); // Local
+    cb(null, path.join('/tmp'));
   },
 });
 
