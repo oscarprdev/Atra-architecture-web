@@ -5,8 +5,8 @@ const client = new MongoClient(DB_URL, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
-    deprecationErrors: true,
-  },
+    deprecationErrors: true
+  }
 });
 
 export async function connect({ db, collection }) {

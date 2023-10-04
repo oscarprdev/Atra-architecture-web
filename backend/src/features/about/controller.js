@@ -11,7 +11,7 @@ export class AboutController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -23,7 +23,7 @@ export class AboutController extends MainController {
       const input = {
         title: req.body.title,
         text: JSON.parse(req.body.text),
-        image: newImage || req.body.image,
+        image: newImage || req.body.image
       };
 
       const updatedAboutData = await AboutModel.updateData(input);
@@ -33,7 +33,7 @@ export class AboutController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }

@@ -13,7 +13,7 @@ const projectSchema = new Schema({
   description: { type: String, required: true, default: undefined },
   mainImage: { type: String, required: true },
   images: [{ type: String, required: true }],
-  top: { type: Boolean, required: true, default: false },
+  top: { type: Boolean, required: true, default: false }
 });
 
 const Project = mongoose.model('Project', projectSchema);
@@ -25,8 +25,8 @@ const client = new MongoClient(DB_URL, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
-    deprecationErrors: true,
-  },
+    deprecationErrors: true
+  }
 });
 
 const creationSeed = async () => {

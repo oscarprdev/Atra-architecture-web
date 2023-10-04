@@ -9,10 +9,7 @@ export function validateAboutSchema(input) {
 
   if (!input.text) {
     errors.text = 'About text is required.';
-  } else if (
-    !Array.isArray(input.text) ||
-    input.text.some((item) => typeof item !== 'string')
-  ) {
+  } else if (!Array.isArray(input.text) || input.text.some((item) => typeof item !== 'string')) {
     errors.text = 'About text must be an array of strings';
   }
 
@@ -35,10 +32,7 @@ export function validatePartialAboutSchema(input) {
   }
 
   if (input.text) {
-    if (
-      !Array.isArray(input.text) ||
-      input.text.some((item) => typeof item !== 'string')
-    ) {
+    if (!Array.isArray(input.text) || input.text.some((item) => typeof item !== 'string')) {
       errors.text = 'About text must be an array of strings';
     }
   }

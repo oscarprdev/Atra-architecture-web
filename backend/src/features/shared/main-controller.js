@@ -9,7 +9,7 @@ export class MainController {
     const outputResponse = {
       status,
       data,
-      createdAt: MainController.generateDate(),
+      createdAt: MainController.generateDate()
     };
     return res.json(outputResponse);
   }

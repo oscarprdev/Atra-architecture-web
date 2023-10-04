@@ -5,7 +5,7 @@ import { CustomError } from '../../core/error/index.js';
 import {
   validatePartialProjectSchema,
   validateProjectImageSchema,
-  validateProjectSchema,
+  validateProjectSchema
 } from '../../core/schemas/project.schema.js';
 
 dotenv.config();
@@ -23,7 +23,7 @@ export class ProjectsModel extends MainModel {
         id: project._id,
         mainImage: project.mainImage,
         name: project.name,
-        year: project.year,
+        year: project.year
       };
     });
   }
@@ -47,7 +47,7 @@ export class ProjectsModel extends MainModel {
         mainImage: project.mainImage,
         name: project.name,
         year: project.year,
-        description: project.description,
+        description: project.description
       };
     });
   }

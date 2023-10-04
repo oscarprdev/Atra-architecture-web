@@ -15,7 +15,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -31,7 +31,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -45,7 +45,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -58,7 +58,7 @@ export class ProjectsController extends MainController {
         year: JSON.parse(req.body.year),
         top: JSON.parse(req.body.top),
         mainImage: allImages[0],
-        images: allImages.splice(1, allImages.length - 1),
+        images: allImages.splice(1, allImages.length - 1)
       };
 
       const project = await ProjectsModel.createNewProject(projectInput);
@@ -68,7 +68,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -83,7 +83,7 @@ export class ProjectsController extends MainController {
         ...req.body,
         year: JSON.parse(req.body.year),
         top: JSON.parse(req.body.top),
-        images: super.provideProjectImages(newImages, currentImages),
+        images: super.provideProjectImages(newImages, currentImages)
       };
 
       const project = await ProjectsModel.updateProject(projectInput, id);
@@ -93,7 +93,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -110,7 +110,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }
@@ -126,7 +126,7 @@ export class ProjectsController extends MainController {
       super.generateErrorResponse({
         res,
         status: e.status ?? 500,
-        error: e.message,
+        error: e.message
       });
     }
   }

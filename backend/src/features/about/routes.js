@@ -5,8 +5,4 @@ import { upload, useCloudinary } from '../../core/middlewares/cloudinary.js';
 export const aboutRouter = Router();
 
 aboutRouter.get('/', AboutController.getAllData);
-aboutRouter.patch(
-  '/',
-  [upload.single('newImage'), useCloudinary],
-  AboutController.updateData
-);
+aboutRouter.patch('/', [upload.single('newImage'), useCloudinary], AboutController.updateData);

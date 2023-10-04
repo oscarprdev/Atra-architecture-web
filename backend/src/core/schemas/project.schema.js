@@ -21,11 +21,7 @@ export function validateProjectSchema(input) {
   }
 
   // Validate 'images'
-  if (
-    !input.images ||
-    !Array.isArray(input.images) ||
-    input.images.some((item) => typeof item !== 'string')
-  ) {
+  if (!input.images || !Array.isArray(input.images) || input.images.some((item) => typeof item !== 'string')) {
     errors.images = 'Images must be an array of valid URLs';
   } else {
     // Validate each image URL
@@ -74,10 +70,7 @@ export function validatePartialProjectSchema(input) {
 
   // Validate 'images' if it exists
   if (input.images) {
-    if (
-      !Array.isArray(input.images) ||
-      input.images.some((item) => typeof item !== 'string')
-    ) {
+    if (!Array.isArray(input.images) || input.images.some((item) => typeof item !== 'string')) {
       errors.images = 'Images must be an array of valid URLs';
     } else {
       // Validate each image URL
