@@ -1,6 +1,11 @@
 import cors from 'cors';
 
-const ACCEPTED_ORIGINS = ['https://atra-arquitectura.netlify.app', 'http://localhost:5173', 'http://localhost:1234'];
+const ACCEPTED_ORIGINS = [
+  'https://atra-arquitectura.netlify.app',
+  'https://atra-architecture-frontend.vercel.app/',
+  'http://localhost:5173',
+  'http://localhost:1234'
+];
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
   cors({

@@ -79,7 +79,7 @@ export class ProjectsController extends MainController {
       const newImages = req.files_url;
       const currentImages = req.body.images || [];
 
-      let projectInput = {
+      const projectInput = {
         ...req.body,
         year: JSON.parse(req.body.year),
         top: JSON.parse(req.body.top),
@@ -109,8 +109,8 @@ export class ProjectsController extends MainController {
     } catch (error) {
       super.generateErrorResponse({
         res,
-        status: e.status ?? 500,
-        error: e.message
+        status: error.status ?? 500,
+        error: error.message
       });
     }
   }
@@ -125,8 +125,8 @@ export class ProjectsController extends MainController {
     } catch (error) {
       super.generateErrorResponse({
         res,
-        status: e.status ?? 500,
-        error: e.message
+        status: error.status ?? 500,
+        error: error.message
       });
     }
   }

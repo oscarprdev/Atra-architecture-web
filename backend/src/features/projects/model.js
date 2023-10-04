@@ -37,7 +37,7 @@ export class ProjectsModel extends MainModel {
   static async provideProjectsByTop(top) {
     const db = await super.connectToMongo({ db: database, collection });
 
-    const query = { top: top === 'true' ? true : false };
+    const query = { top: top === 'true' };
 
     const projectsFiltered = await super.getElementByQuery(db, query);
 
