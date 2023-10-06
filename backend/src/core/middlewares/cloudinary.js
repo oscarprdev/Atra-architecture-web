@@ -42,15 +42,15 @@ const provideImagesFromFolder = async () => {
 const removeOldImageFromCloudinary = async (imageIds, folder) => {
   const images = await provideImagesFromFolder(folder);
 
-  const oldImages = images.resources.filter((image) => folder === image.folder && !imageIds.includes(image.public_id));
+  const oldImages = images.resources.filter(
+    (image) => folder === image.folder && !imageIds.includes(image.public_id)
+  );
 
   if (oldImages) {
     for (const oldImage of oldImages) {
       await cloudinary.v2.uploader.destroy(oldImage.public_id);
     }
   }
-
-  return;
 };
 
 const uploadToCloudinary = async (file, folder) => {
@@ -68,12 +68,24 @@ const uploadToCloudinary = async (file, folder) => {
   };
 };
 
-const uploadVariousImagesToCloudinary = async (method, newImages, currentImages, folder) => {
-  let secureImagesUrlPromises = await newImages.map(async (file) => await uploadToCloudinary(file, folder));
+const uploadVariousImagesToCloudinary = async (
+  method,
+  newImages,
+  currentImages,
+  folder
+) => {
+  const secureImagesUrlPromises = await newImages.map(
+    async (file) => await uploadToCloudinary(file, folder)
+  );
 
   const cloudinaryImages = await Promise.all(secureImagesUrlPromises);
 
-  if (method === 'PATCH' && currentImages && Array.isArray(currentImages) && currentImages.length === 0) {
+  if (
+    method === 'PATCH' &&
+    currentImages &&
+    Array.isArray(currentImages) &&
+    currentImages.length === 0
+  ) {
     const imageIds = cloudinaryImages.map((image) => image.id);
 
     await removeOldImageFromCloudinary([...imageIds], folder);
@@ -118,7 +130,11 @@ const useCloudinary = async (req, res, next) => {
     }
 
     if (req.file) {
-      const { newImage } = await uploadSingleImageToCloudinary(req.method, req.file, projectFolder);
+      const { newImage } = await uploadSingleImageToCloudinary(
+        req.method,
+        req.file,
+        projectFolder
+      );
 
       req.file_url = newImage;
 
