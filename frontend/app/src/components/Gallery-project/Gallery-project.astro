@@ -16,7 +16,7 @@ const { project, index } = Astro.props;
 >
     <div class="relative w-full md:w-[40vw]">
         <figure
-            class="h-[30vh] w-full overflow-hidden object-cover md:h-[60vh] md:w-[40vw]"
+            class="h-[30vh] w-full overflow-hidden object-cover md:h-[60vh] md:w-[35vw]"
         >
             <img
                 src={project.mainImage}
@@ -25,12 +25,13 @@ const { project, index } = Astro.props;
             />
         </figure>
         <span
-            class="absolute right-[-0.5rem] top-[0.5rem] z-[-1] h-[30vh] w-full bg-[var(--image-contrast)] md:right-[-2rem] md:top-[2rem] md:h-[60vh] md:w-[40vw]"
+            class:list={[{ 'md:left-[-2.5rem] md:right-auto': index % 2 === 1 }]}
+            class="absolute right-[-0.5rem] top-[0.5rem] z-[-1] h-[30vh] w-full bg-[var(--image-contrast)] md:right-[1.7rem] md:top-[2.5rem] md:h-[60vh] md:w-[35vw]"
         ></span>
     </div>
     <div
-        class:list={[{ 'md:ml-0 md:mr-20 md:items-end': index % 2 === 1 }]}
-        class="relative flex flex-col items-center gap-5 md:ml-20 md:w-[40vw] md:items-start"
+        class:list={[{ 'md:ml-auto md:mr-20 md:items-end': index % 2 === 1 }]}
+        class="relative flex flex-col items-center gap-5 md:ml-5 md:w-[40vw] md:items-start"
     >
         <p class="text-4xl md:text-[3rem]">{project.name}</p>
         <p class="text-center text-[20px] md:text-left md:text-[1.7rem]">
