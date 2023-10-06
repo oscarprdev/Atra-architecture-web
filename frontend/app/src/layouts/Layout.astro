@@ -1,0 +1,63 @@
+---
+import Header from '../components/Header/Header.vue';
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="ATRA arquitectura"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon.svg"
+        />
+        <meta
+            name="generator"
+            content={Astro.generator}
+        />
+        <title>{title}</title>
+    </head>
+    <body class="w-full">
+        <Header client:visible />
+        <main class="flex flex-col gap-[2rem]">
+            <slot />
+        </main>
+        <style is:global>
+            @import '../styles/index.css';
+
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
+            @font-face {
+                font-family: 'cormorant';
+                src: url('../assets/fonts/Cormorant-Light.ttf') format('truetype');
+                font-display: swap;
+            }
+
+            @layer base {
+                :root {
+                    --dark: rgb(34, 34, 34);
+                    --dark-smooth: rgba(88, 88, 88, 0.628);
+                    --dark-light: rgba(153, 143, 133, 0.287);
+                    --light: rgb(255, 255, 255);
+
+                    --image-contrast: rgb(235, 221, 203);
+                }
+            }
+        </style>
+    </body>
+</html>

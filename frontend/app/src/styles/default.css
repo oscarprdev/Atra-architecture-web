@@ -1,0 +1,16 @@
+html {
+    font-family: system-ui, sans-serif;
+    background: var(--light);
+}
+
+h1,
+h2,
+p,
+li,
+a {
+    font-family:
+        cormorant,
+        -apple-system,
+        sans-serif;
+    font-weight: 400;
+}

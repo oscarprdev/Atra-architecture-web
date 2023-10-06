@@ -37,12 +37,7 @@ onMounted(async () => {
       <p>Jaume Perez Llopis</p>
     </div>
     <figure class="image-wrapper">
-      <img
-        v-if="currentImage"
-        :key="currentImage"
-        :src="currentImage"
-        alt="imatge destacada de projecte"
-      />
+      <img v-if="currentImage" :key="currentImage" :src="currentImage" alt="imatge destacada de projecte" />
     </figure>
   </section>
 </template>

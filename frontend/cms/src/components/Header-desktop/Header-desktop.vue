@@ -33,31 +33,20 @@ onMounted(() => {
   <header>
     <ul>
       <li>
-        <router-link :light="isHeaderLight" v-if="props.path !== '/'" to="/"
-          >Inici</router-link
-        >
+        <router-link :light="isHeaderLight" v-if="props.path !== '/'" to="/">Inici</router-link>
       </li>
       <li>
-        <router-link
-          to="/projects"
-          :light="isHeaderLight"
-          :class="`${props.path === '/projects' && 'active'}`"
+        <router-link to="/projects" :light="isHeaderLight" :class="`${props.path === '/projects' && 'active'}`"
           >Projectes</router-link
         >
       </li>
       <li>
-        <router-link
-          to="/about"
-          :light="isHeaderLight"
-          :class="`${props.path === '/about' && 'active'}`"
+        <router-link to="/about" :light="isHeaderLight" :class="`${props.path === '/about' && 'active'}`"
           >Qui som</router-link
         >
       </li>
       <li>
-        <router-link
-          to="/contact"
-          :light="isHeaderLight"
-          :class="`${props.path === '/contact' && 'active'}`"
+        <router-link to="/contact" :light="isHeaderLight" :class="`${props.path === '/contact' && 'active'}`"
           >Contacte</router-link
         >
       </li>
@@ -75,11 +64,7 @@ header {
   padding: 1rem 5rem;
 
   opacity: 0;
-  background: linear-gradient(
-    rgba(58, 32, 33, 0.24),
-    rgba(53, 30, 31, 0.08) 50px,
-    rgba(51, 29, 30, 0) 100px
-  );
+  background: linear-gradient(rgba(58, 32, 33, 0.24), rgba(53, 30, 31, 0.08) 50px, rgba(51, 29, 30, 0) 100px);
   animation: fade-left 0.7s linear forwards;
 }
 
