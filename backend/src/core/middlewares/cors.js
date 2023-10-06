@@ -4,7 +4,8 @@ const ACCEPTED_ORIGINS = [
   'https://atra-arquitectura.netlify.app',
   'https://atra-architecture-frontend.vercel.app',
   'http://localhost:5173',
-  'http://localhost:1234'
+  'http://localhost:1234',
+  'http://localhost:4321'
 ];
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
