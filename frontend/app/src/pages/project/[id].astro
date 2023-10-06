@@ -1,0 +1,19 @@
+---
+import { getAllProjectsIds } from '../../services/get-all-projects';
+
+interface Props {
+    id: string;
+}
+
+export async function getStaticPaths() {
+    const allProjectIds = await getAllProjectsIds();
+
+    return allProjectIds.map((id) => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<section>
+    <p>{id}</p>
+</section>

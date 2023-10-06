@@ -13,7 +13,7 @@ watch(
 );
 
 onMounted(() => {
-    path.value = window.location.hash.replace('', '/');
+    path.value = window.location.pathname;
 });
 </script>
 

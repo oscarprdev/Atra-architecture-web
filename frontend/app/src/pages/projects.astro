@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllProjects } from '../services/get-all-projects';
+
+const projects = await getAllProjects();
+---
+
+<Layout title="ATRA - Projectes">
+    <section class="flex w-[90vw] flex-col">
+        <h1 class="mt-[5rem] text-[50px]">Projectes</h1>
+        {
+            projects.map((project) => (
+                <article>
+                    <a href={`project/${project.id}`}>{project.name}</a>
+                </article>
+            ))
+        }
+    </section>
+</Layout>

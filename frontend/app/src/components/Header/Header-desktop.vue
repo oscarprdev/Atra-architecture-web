@@ -26,7 +26,6 @@ watch(
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    console.log(props.path);
     isHeaderLight.value = props.path === '/';
 });
 </script>
@@ -93,7 +92,7 @@ ul {
   gap: clamp(1rem, 2vw, 2rem);
   width: 100%;
   opacity: 0;
-  animation: fade-left 0.7s linear forwards;
+  animation: fade-left 0.3s linear forwards;
 
 }
 
