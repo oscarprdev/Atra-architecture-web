@@ -1,6 +1,7 @@
 ---
 import Image from '../Image/Image.astro';
 interface Props {
+    id: string;
     name: string;
     description: string;
     year: number;
@@ -8,14 +9,20 @@ interface Props {
     images: string[];
 }
 
-const { name, description, year, mainImage, images } = Astro.props;
+const { id, name, description, year, mainImage, images } = Astro.props;
 ---
 
-<section class="flex flex-col items-center gap-20">
+<section
+    class="flex flex-col items-center gap-20"
+    transition:name=`box-${id}`
+>
     <div
         class="relative flex flex-col gap-4 md:w-screen md:flex-row md:items-center md:justify-between"
     >
-        <figure class="h-[50vh] overflow-hidden md:h-screen md:w-[55vw]">
+        <figure
+            class="h-[50vh] overflow-hidden md:h-screen md:w-[55vw]"
+            transition:name=`figure-${id}`
+        >
             <Image
                 src={mainImage}
                 alt="project main image"
@@ -24,9 +31,22 @@ const { name, description, year, mainImage, images } = Astro.props;
         <div
             class="flex h-[50vh] flex-col items-center gap-4 text-center md:ml-[4rem] md:w-[45vw] md:items-start"
         >
-            <h1 class="text-[40px] md:text-[50px]">{name}</h1>
-            <p class="text-[20px] md:text-[25px]">{description}</p>
-            <p class="mt-[-2rem] text-[4rem] text-[var(--dark-light)] md:text-[6rem]">
+            <h1
+                class="text-[40px] md:text-[50px]"
+                transition:name=`name-${id}`
+            >
+                {name}
+            </h1>
+            <p
+                class="text-[20px] md:w-[40vw] md:text-left md:text-[25px]"
+                transition:name=`description-${id}`
+            >
+                {description}
+            </p>
+            <p
+                class="mt-[-2rem] text-[4rem] text-[var(--dark-light)] md:text-[6rem]"
+                transition:name=`year-${id}`
+            >
                 {year}
             </p>
         </div>

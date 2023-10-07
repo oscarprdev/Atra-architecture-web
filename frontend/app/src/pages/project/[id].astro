@@ -24,6 +24,7 @@ const project: Project = await getProjectById(id);
 
 <Layout title={`ATRA - ${project.name}`}>
     <ProjectDetail
+        id={id}
         name={project.name}
         description={project.description}
         year={project.year}

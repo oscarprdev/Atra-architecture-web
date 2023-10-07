@@ -1,6 +1,8 @@
 ---
 import Footer from '../components/Footer/Footer.astro';
 import Header from '../components/Header/Header.vue';
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
     title: string;
 }
@@ -20,6 +22,7 @@ const { title } = Astro.props;
             name="viewport"
             content="width=device-width"
         />
+        <ViewTransitions fallback="none" />
         <link
             rel="icon"
             type="image/svg+xml"

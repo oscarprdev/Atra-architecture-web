@@ -13,14 +13,20 @@ const projects: Project[] = await getAllProjects();
                 href={`project/${id}`}
                 class="group relative h-[40vh] overflow-hidden rounded-sm md:h-[55vh]"
             >
-                <figure class="aspect-w-4 aspect-h-3 h-full overflow-hidden">
+                <figure
+                    class="aspect-w-4 aspect-h-3 h-full overflow-hidden"
+                    transition:name=`figure-${id}`
+                >
                     <Image
                         src={mainImage}
                         alt="project image"
                         className="transform transition-transform duration-300 group-hover:scale-105"
                     />
                 </figure>
-                <p class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-center text-4xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p
+                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-center text-4xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    transition:name=`name-${id}`
+                >
                     {name}
                 </p>
             </a>

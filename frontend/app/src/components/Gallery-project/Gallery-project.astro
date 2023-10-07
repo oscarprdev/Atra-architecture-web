@@ -14,10 +14,12 @@ const isOdd = index % 2 === 1;
 
 <article
     class="flex w-full flex-col items-center gap-5 md:relative md:mb-[8rem] md:flex-row md:even:flex-row-reverse md:first-of-type:mt-10"
+    transition:name=`box-${project.id}`
 >
     <div class="relative w-full md:w-[40vw]">
         <figure
             class="h-[30vh] w-full overflow-hidden object-cover md:h-[60vh] md:w-[35vw]"
+            transition:name=`figure-${project.id}`
         >
             <Image
                 src={project.mainImage}
@@ -33,13 +35,22 @@ const isOdd = index % 2 === 1;
         class:list={[{ 'md:ml-auto md:mr-20 md:items-end': isOdd }]}
         class="relative flex flex-col items-center gap-5 md:ml-10 md:w-[40vw] md:items-start"
     >
-        <p class="text-4xl md:text-[3rem]">{project.name}</p>
-        <p class="text-center text-[20px] md:text-left md:text-[1.7rem]">
+        <p
+            class="text-4xl md:text-[3rem]"
+            transition:name=`name-${project.id}`
+        >
+            {project.name}
+        </p>
+        <p
+            class="text-center text-[20px] md:text-left md:text-[1.7rem]"
+            transition:name=`description-${project.id}`
+        >
             {project.description}
         </p>
         <p
             class:list={[{ 'md:left-auto md:right-[4rem]': isOdd }]}
             class="absolute bottom-[-4rem] text-[4rem] text-[var(--dark-light)] md:bottom-[-7rem] md:left-[4rem] md:text-[8rem]"
+            transition:name=`year-${project.id}`
         >
             {project.year}
         </p>
