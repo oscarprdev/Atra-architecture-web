@@ -12,12 +12,8 @@ const props = defineProps<{
 }>();
 
 const handleCloseSession = async (): Promise<void> => {
-  document.cookie = 'false';
-  const newTab = window.open('https://atra-architecture.vercel.app/');
-
-  if (newTab) {
-    newTab.focus();
-  }
+  window.location.href = 'https://atra-architecture.vercel.app/';
+  window.close();
 };
 
 const emit = defineEmits<{
