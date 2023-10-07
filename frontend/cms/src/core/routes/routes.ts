@@ -2,11 +2,18 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
+    path: '/',
+    component: () => import('../../screens/Home.vue')
+  },
+  {
     path: '/dashboard',
-    component: () => import('../../screens/Dashboard/Dashboard-screen.vue'),
-    beforeEnter: (_: any, from: any, next: any) => {
-      if (from.fullPath === 'http://localhost:1234/admin') {
+    component: () => import('../../screens/Dashboard-screen.vue'),
+    beforeEnter: (_: any, __: any, next: any) => {
+      const referringURL = document.referrer;
+      if (referringURL === 'https://atra-architecture.vercel.app/') {
         next();
+      } else {
+        next('/');
       }
     }
   }
