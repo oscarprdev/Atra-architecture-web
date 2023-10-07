@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AdminForm from '../components/Admin-form/Admin-form.vue';
+---
+
+<Layout title="ATRA - Admin">
+    <section class="grid h-screen place-items-center">
+        <AdminForm client:visible />
+    </section>
+</Layout>

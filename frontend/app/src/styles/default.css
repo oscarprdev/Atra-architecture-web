@@ -3,11 +3,7 @@ html {
     background: var(--light);
 }
 
-h1,
-h2,
-p,
-li,
-a {
+body {
     font-family:
         cormorant,
         -apple-system,

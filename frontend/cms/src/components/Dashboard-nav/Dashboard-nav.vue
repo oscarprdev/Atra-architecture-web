@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
 import Button from '../Button/Button.vue';
 import type { DashboardView } from '../Dashboard/Dashboard.vue';
 import { IconId } from '@tabler/icons-vue';
@@ -12,11 +11,13 @@ const props = defineProps<{
   dashboardView: DashboardView;
 }>();
 
-const router = useRouter();
-
 const handleCloseSession = async (): Promise<void> => {
   document.cookie = 'false';
-  await router.push('/');
+  const newTab = window.open('https://atra-architecture.vercel.app/');
+
+  if (newTab) {
+    newTab.focus();
+  }
 };
 
 const emit = defineEmits<{
@@ -28,22 +29,13 @@ const emit = defineEmits<{
   <nav>
     <ul class="nav-list">
       <li class="nav-header"><h2>ATRA</h2></li>
-      <li
-        :class="`nav-item ${props.dashboardView.personal && 'active'}`"
-        v-on:click="emit('toggleView', 'personal')"
-      >
+      <li :class="`nav-item ${props.dashboardView.personal && 'active'}`" v-on:click="emit('toggleView', 'personal')">
         <IconFileDescription /> Informacio personal
       </li>
-      <li
-        :class="`nav-item ${props.dashboardView.about && 'active'}`"
-        v-on:click="emit('toggleView', 'about')"
-      >
+      <li :class="`nav-item ${props.dashboardView.about && 'active'}`" v-on:click="emit('toggleView', 'about')">
         <IconId /> Descripcio
       </li>
-      <li
-        :class="`nav-item ${props.dashboardView.projects && 'active'}`"
-        v-on:click="emit('toggleView', 'projects')"
-      >
+      <li :class="`nav-item ${props.dashboardView.projects && 'active'}`" v-on:click="emit('toggleView', 'projects')">
         <IconListDetails />
         Projectes
       </li>
@@ -52,9 +44,7 @@ const emit = defineEmits<{
         Admin
       </li>
     </ul>
-    <button class="logout-btn" v-on:click="handleCloseSession">
-      <IconLogout /> Tancar sessio
-    </button>
+    <button class="logout-btn" v-on:click="handleCloseSession"><IconLogout /> Tancar sessio</button>
   </nav>
 </template>
 

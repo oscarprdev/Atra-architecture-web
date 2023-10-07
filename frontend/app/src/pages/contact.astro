@@ -1,35 +1,13 @@
 ---
-import Image from '../components/Image/Image.astro';
+import ContactInfo from '../components/Contact-info/Contact-info.astro';
+import ContactImage from '../components/Contact-image/Contact-image.astro';
 import Layout from '../layouts/Layout.astro';
-import { getPersonalInfo } from '../services/get-personal-info';
-import { PersonalInfo } from '../types/personal-info.type';
-
-const { name, phone, email, direction }: PersonalInfo = await getPersonalInfo();
 ---
 
 <Layout title="ATRA - Contacte">
     <section class="relative grid h-screen w-[100vw] place-items-center">
         <h1 class="absolute top-16 text-[50px] md:right-[25vw] md:hidden">Contacte</h1>
-        <figure
-            class="figure absolute bottom-0 z-[-1] h-[50vh] w-screen md:bottom-auto md:left-0 md:h-screen md:w-[60vw] md:overflow-hidden"
-        >
-            <Image
-                src="public/images/contact.webp"
-                alt="contact image"
-            />
-        </figure>
-        <div
-            class="z-1 flex h-[50vh] w-[90vw] flex-col items-center justify-center gap-5 bg-[var(--dark)] px-5 text-center md:ml-[25vw] md:w-[35vw]"
-        >
-            <p class="text-[25px] text-[var(--light-opacity)] md:text-[30px]">{name}</p>
-            <p class="text-[22px] text-[var(--light-opacity)] md:text-[25px]">{phone}</p>
-            <p class="text-[22px] text-[var(--light-opacity)] md:text-[25px]">{email}</p>
-            <a
-                target="_blank"
-                href="https://www.google.es/maps/place/C.+dels+Dolors,+37,+46500+Sagunt,+Val%C3%A8ncia/@39.6782503,-0.2788762,17z/data=!3m1!4b1!4m6!3m5!1s0xd601516b4710047:0x96451dfa8bae958d!8m2!3d39.6782462!4d-0.2763013!16s%2Fg%2F11c4mrv63c?entry=ttu"
-                class="text-[18px] text-[var(--light-opacity)] hover:text-[var(--light)] md:text-[22px]"
-                >{direction}</a
-            >
-        </div>
+        <ContactImage />
+        <ContactInfo />
     </section>
 </Layout>
