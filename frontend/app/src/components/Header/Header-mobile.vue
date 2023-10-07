@@ -63,7 +63,7 @@ const handleIcon = (): void => {
 
 <style scoped>
 header {
-  position: sticky;
+  position: fixed;
   display: flex;
   align-items: end;
   width: 100vw;
@@ -76,7 +76,7 @@ header {
 .header-active {
   height: 100vh;
   width: 100%;
-  position: sticky;
+  position: fixed;
 }
 
 .hamburguer-container {

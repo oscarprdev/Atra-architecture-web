@@ -7,3 +7,8 @@ export interface Project {
     description: string;
     top: boolean;
 }
+
+export type GalleryProject = Pick<
+    Project,
+    'id' | 'name' | 'mainImage' | 'description' | 'year'
+>;

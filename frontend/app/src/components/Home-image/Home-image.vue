@@ -30,7 +30,7 @@ onMounted(async () => {
 </script>
 <template>
     <figure
-        class="absolute top-[-5rem] w-[80vw] h-[30vh] overflow-hidden md:w-full md:top-[15%] md:left-[-5rem] md:h-[70%]"
+        class="absolute top-[-5rem] w-[90vw] h-[35vh] overflow-hidden md:w-full md:top-[15%] md:left-[-5rem] md:h-[70%]"
     >
         <img
             v-if="currentImage"

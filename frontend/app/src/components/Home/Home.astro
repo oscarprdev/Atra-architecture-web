@@ -3,23 +3,25 @@ import HomeImage from '../Home-image/Home-image.vue';
 ---
 
 <section
-    class="flex h-[77vh] w-full flex-col items-center justify-between md:h-screen md:flex-row"
+    class="flex h-[100vh] w-full flex-col items-center justify-between md:h-screen md:flex-row"
 >
     <div
         class="mt-[7rem] flex w-[90vw] max-w-lg flex-col items-center gap-2 text-center md:ml-[8rem] md:mt-0 md:items-start md:text-left"
     >
         <h1 class="text-[50px] md:text-[100px]">ATRA</h1>
-        <p class="text-[18px] md:text-[26px]">
+        <p class="text-[20px] md:text-[26px]">
             Asistència tècnica en rehabilitació i arquitectura
         </p>
-        <p class="text-[var(--darl-smooth)] md:text-[25px]">Jaume Perez Llopis</p>
+        <p class="text-[20px] text-[var(--darl-smooth)] md:text-[25px]">
+            Jaume Perez Llopis
+        </p>
         <span
             class="mt-[2rem] h-[1px] w-[60vw] bg-gradient-to-r from-transparent via-[var(--dark-smooth)] to-transparent md:w-[30vw]"
         ></span>
     </div>
 
     <div
-        class="relative grid h-[25vh] w-full place-items-center bg-[var(--dark)] md:h-screen md:w-[40vw]"
+        class="relative grid h-[35vh] w-full place-items-center bg-[var(--dark)] md:h-screen md:w-[40vw]"
     >
         <HomeImage client:visible />
     </div>

@@ -1,0 +1,49 @@
+---
+import Image from '../Image/Image.astro';
+interface Props {
+    name: string;
+    description: string;
+    year: number;
+    mainImage: string;
+    images: string[];
+}
+
+const { name, description, year, mainImage, images } = Astro.props;
+---
+
+<section class="flex flex-col items-center gap-20">
+    <div
+        class="relative flex flex-col gap-4 md:w-screen md:flex-row md:items-center md:justify-between"
+    >
+        <figure class="h-[50vh] overflow-hidden md:h-screen md:w-[55vw]">
+            <Image
+                src={mainImage}
+                alt="project main image"
+            />
+        </figure>
+        <div
+            class="flex h-[50vh] flex-col items-center gap-4 text-center md:ml-[4rem] md:w-[45vw] md:items-start"
+        >
+            <h1 class="text-[40px] md:text-[50px]">{name}</h1>
+            <p class="text-[20px] md:text-[25px]">{description}</p>
+            <p class="mt-[-2rem] text-[4rem] text-[var(--dark-light)] md:text-[6rem]">
+                {year}
+            </p>
+        </div>
+        <span
+            class="z-1 absolute bottom-[3rem] left-[50%] h-[80px] w-[1px] bg-[var(--dark-smooth)] md:bottom-[35vh] md:left-[60vw] md:h-[1px] md:w-[180px]"
+        ></span>
+    </div>
+    <div class="grid h-full w-[80vw] grid-cols-1 gap-4 md:grid-cols-2">
+        {
+            images.map((image) => (
+                <figure class="h-[30vh] w-full md:h-[60vh]">
+                    <Image
+                        src={image}
+                        alt="project image"
+                    />
+                </figure>
+            ))
+        }
+    </div>
+</section>

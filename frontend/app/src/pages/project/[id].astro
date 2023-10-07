@@ -1,19 +1,33 @@
 ---
+import ProjectDetail from '../../components/Project-detail/Project-detail.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getAllProjectsIds } from '../../services/get-all-projects';
+import { getProjectById } from '../../services/get-project-id';
+import { Project } from '../../types/project.type';
 
 interface Props {
     id: string;
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ paginate }) {
     const allProjectIds = await getAllProjectsIds();
 
     return allProjectIds.map((id) => ({ params: { id } }));
 }
 
 const { id } = Astro.params;
+
+if (!id) return Astro.redirect('/404');
+
+const project: Project = await getProjectById(id);
 ---
 
-<section>
-    <p>{id}</p>
-</section>
+<Layout title={`ATRA - ${project.name}`}>
+    <ProjectDetail
+        name={project.name}
+        description={project.description}
+        year={project.year}
+        mainImage={project.mainImage}
+        images={project.images}
+    />
+</Layout>

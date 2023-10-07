@@ -5,12 +5,9 @@ import GalleryProject from '../Gallery-project/Gallery-project.astro';
 const projects = await getProjectsByTop();
 ---
 
-<section class="flex h-screen flex-col items-center gap-10">
+<section class="flex flex-col items-center gap-10">
     <h2 class="text-[40px] md:text-[60px]">Destacats</h2>
-    <section
-        class="flex w-[90vw] flex-col items-center gap-[2.5rem]"
-        v-if="projects"
-    >
+    <section class="flex w-[90vw] flex-col items-center gap-[2.5rem]">
         {
             projects.map((project, index) => (
                 <GalleryProject

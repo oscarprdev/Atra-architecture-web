@@ -1,7 +1,6 @@
 ---
-import { Project } from '../../types/project.type';
-
-type GalleryProject = Pick<Project, 'id' | 'name' | 'mainImage' | 'description' | 'year'>;
+import { GalleryProject } from '../../types/project.type';
+import Image from '../Image/Image.astro';
 
 interface Props {
     project: GalleryProject;
@@ -9,6 +8,8 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
+
+const isOdd = index % 2 === 1;
 ---
 
 <article
@@ -18,39 +19,38 @@ const { project, index } = Astro.props;
         <figure
             class="h-[30vh] w-full overflow-hidden object-cover md:h-[60vh] md:w-[35vw]"
         >
-            <img
+            <Image
                 src={project.mainImage}
                 alt="project image"
-                class="h-full w-full"
             />
         </figure>
         <span
-            class:list={[{ 'md:left-[-2.5rem] md:right-auto': index % 2 === 1 }]}
+            class:list={[{ 'md:left-[-2.5rem] md:right-auto': isOdd }]}
             class="absolute right-[-0.5rem] top-[0.5rem] z-[-1] h-[30vh] w-full bg-[var(--image-contrast)] md:right-[1.7rem] md:top-[2.5rem] md:h-[60vh] md:w-[35vw]"
         ></span>
     </div>
     <div
-        class:list={[{ 'md:ml-auto md:mr-20 md:items-end': index % 2 === 1 }]}
-        class="relative flex flex-col items-center gap-5 md:ml-5 md:w-[40vw] md:items-start"
+        class:list={[{ 'md:ml-auto md:mr-20 md:items-end': isOdd }]}
+        class="relative flex flex-col items-center gap-5 md:ml-10 md:w-[40vw] md:items-start"
     >
         <p class="text-4xl md:text-[3rem]">{project.name}</p>
         <p class="text-center text-[20px] md:text-left md:text-[1.7rem]">
             {project.description}
         </p>
         <p
-            class:list={[{ 'md:left-auto md:right-[4rem]': index % 2 === 1 }]}
+            class:list={[{ 'md:left-auto md:right-[4rem]': isOdd }]}
             class="absolute bottom-[-4rem] text-[4rem] text-[var(--dark-light)] md:bottom-[-7rem] md:left-[4rem] md:text-[8rem]"
         >
             {project.year}
         </p>
     </div>
     <div
-        class:list={[{ 'md:left-[5rem] md:right-auto': index % 2 === 1 }]}
+        class:list={[{ 'md:left-[5rem] md:right-auto': isOdd }]}
         class="mt-[2rem] flex flex-col items-center md:absolute md:bottom-0 md:right-[5rem]"
     >
         <a
             href={`project/${project.id}`}
-            class="text-[30px text-[var(--dark-smooth)] hover:text-[var(--dark)] md:text-[40px]"
+            class="text-[30px] text-[var(--dark-smooth)] hover:text-[var(--dark)] md:text-[40px]"
         >
             Veure mes
         </a>

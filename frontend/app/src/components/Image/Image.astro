@@ -1,0 +1,19 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+    className?: string;
+}
+
+const { src, alt, className } = Astro.props;
+
+const hasClass = typeof className === 'string';
+---
+
+<img
+    src={src}
+    alt={alt}
+    class:list={[{ className: hasClass }]}
+    class="h-full w-full object-cover"
+    onerror="this.onerror=null; this.src='../src/assets/images/default-picture.png'"
+/>
