@@ -24,40 +24,42 @@ const handleIcon = (): void => {
             <span class="hamburguer" />
             <span class="hamburguer-bottom" />
         </div>
-        <ul
-            v-if="headerActive"
-            class="header-mobile__list-links"
-        >
-            <li @click="handleIcon">
-                <a
-                    v-if="props.path !== '/'"
-                    href="/"
-                    >Inici</a
-                >
-            </li>
-            <li @click="handleIcon">
-                <a
-                    href="/projects"
-                    :class="`${props.path === '/projects' && 'active'}`"
-                    >Projectes</a
-                >
-            </li>
-            <li @click="handleIcon">
-                <a
-                    href="/about"
-                    :class="`${props.path === '/about' && 'active'}`"
-                >
-                    Qui som
-                </a>
-            </li>
-            <li @click="handleIcon">
-                <a
-                    href="/contact"
-                    :class="`${props.path === '/contact' && 'active'}`"
-                    >Contacte</a
-                >
-            </li>
-        </ul>
+        <transition name="fade">
+            <ul
+                v-if="headerActive"
+                class="header-mobile__list-links"
+            >
+                <li @click="handleIcon">
+                    <a
+                        v-if="props.path !== '/'"
+                        href="/"
+                        >Inici</a
+                    >
+                </li>
+                <li @click="handleIcon">
+                    <a
+                        href="/projects"
+                        :class="`${props.path === '/projects' && 'active'}`"
+                        >Projectes</a
+                    >
+                </li>
+                <li @click="handleIcon">
+                    <a
+                        href="/about"
+                        :class="`${props.path === '/about' && 'active'}`"
+                    >
+                        Qui som
+                    </a>
+                </li>
+                <li @click="handleIcon">
+                    <a
+                        href="/contact"
+                        :class="`${props.path === '/contact' && 'active'}`"
+                        >Contacte</a
+                    >
+                </li>
+            </ul>
+        </transition>
     </header>
 </template>
 
@@ -69,8 +71,6 @@ header {
   width: 100vw;
   padding: 0;
   z-index: 3;
-
-  opacity: 1;
 }
 
 .header-active {
@@ -136,9 +136,7 @@ header {
 
   background-color: var(--light);
 
-  opacity: 0;
-
-  animation: header-fade 0.2s linear forwards;
+  /* animation: header-fade 0.2s linear forwards; */
 }
 
 a {
@@ -165,7 +163,17 @@ a:hover:before {
   transform: scaleX(1);
 }
 
-@keyframes header-fade {
+
+.fade-enter-active,
+.fade-enter {
+  animation: header-fade-in 0.2s linear forwards;
+}
+
+.fade-leave-active, .fade-leave-to {
+  animation: header-fade-out 0.2s linear forwards;
+}
+
+@keyframes header-fade-in {
   0% {
     opacity: 0;
     transform: translateX(10rem);
@@ -173,7 +181,19 @@ a:hover:before {
 
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes header-fade-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(10rem);
   }
 }
 </style>
